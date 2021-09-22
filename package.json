@@ -1,0 +1,19 @@
+{
+  "name": "nethack",
+  "version": "1.0.0",
+  "description": "...",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OGreenwood672/NetHack.git"
+  },
+  "author": "OGreenwood672",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/OGreenwood672/NetHack/issues"
+  },
+  "homepage": "https://github.com/OGreenwood672/NetHack#readme"
+}
