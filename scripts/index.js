@@ -13,21 +13,74 @@
 
 */
 
+var ctx;
+var map = [];
 
-var canvas = document.getElementById("game");
-var context = canvas.getContext("2d");
+const w = 10;
+const h = 10;
+let w_scale, h_scale;
 
-canvas.addEventListener("click", () => {
-    var game_el = document.getElementById("game");
-    if(game_el.requestFullscreen) {
-        game_el.requestFullscreen();
+
+function create() {
+
+    var canvas = document.getElementById("game");
+    ctx = canvas.getContext("2d");
+
+    w_scale = canvas.width / w;
+    h_scale = canvas.height / h;
+
+    createMap();
+
+
+}
+
+function render(time) {
+
+
+    drawMap();
+
+    requestAnimationFrame(render);
+
+
+}
+
+function drawMap() {
+
+
+    for (x=0; x<w; x++) {
+
+        for (y=0; y<h; y++) {
+
+            let colour = map[x][y].getColour();
+
+            ctx.strokeStyle = colour;
+            ctx.fillStyle = colour;
+
+            ctx.fillRect(w_scale * x, h_scale * y, w_scale, h_scale);
+
+        }
+
     }
-    else if(game_el.webkitRequestFullScreen) {
-        game_el.webkitRequestFullScreen();
+
+}
+
+function createMap() {
+
+    for (x=0; x<w; x++) {
+
+        var col = [];
+
+        for (y=0; y<h; y++) {
+
+            col.push(new Block(x, y));
+
+        }
+
+        map.push(col);
+
     }
-   else if (game_el.mozRequestFullScreen) {
-        game_el.mozRequestFullScreen();
-   } else if (game_el.msRequestFullscreen) {
-        game_el.msRequestFullscreen();
-   }
-});
+
+}
+
+create();
+requestAnimationFrame(render);
